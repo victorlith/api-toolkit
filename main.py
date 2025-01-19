@@ -7,7 +7,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-pattern_route = 'api-toolkit'
+pattern_route = 'api'
 
 @app.route(f'/{pattern_route}/economisty/user-data', methods=['GET'])
 async def find_user():
