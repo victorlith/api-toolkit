@@ -12,7 +12,6 @@ pattern_route = 'api'
 @app.route(f'/{pattern_route}/economisty/user-data', methods=['GET'])
 async def find_user():
     id_user = request.args.get('id_user', type=int)
-    print(id_user)
     if id_user is not None:
         id_user = int(id_user)
 
@@ -97,7 +96,6 @@ async def buscar_todos_exoplanetas():
         return jsonify({"resultado": response})
     else:
         return jsonify({"resultado": None}), 400
-
 
 if __name__ == '__main__':
     module_utils.carregar_eventos_moedas()
