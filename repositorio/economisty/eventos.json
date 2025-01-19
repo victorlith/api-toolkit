@@ -1,0 +1,185 @@
+[
+	{
+		"titulo": "",
+		"raridade": "",
+		"descricao": "",
+		"modificador": 1,
+		"url_imagem": "",
+		"path_imagem": "",
+		"cor": "1EFF00",
+		"peso": 1,
+		"tipo_evento": ""
+	},
+	{
+		"titulo": "",
+		"raridade": "",
+		"descricao": "",
+		"modificador": 1,
+		"url_imagem": "",
+		"path_imagem": "",
+		"cor": "1EFF00",
+		"peso": 1,
+		"tipo_evento": ""
+	},
+	{
+		"titulo": "",
+		"raridade": "",
+		"descricao": "",
+		"modificador": 1,
+		"url_imagem": "",
+		"path_imagem": "",
+		"cor": "1EFF00",
+		"peso": 1,
+		"tipo_evento": ""
+	},
+	{
+		"titulo": "Sorte em Dobro",
+		"raridade": "Incomum",
+		"descricao": "Os ventos mudaram repentinamente, e você percebe que a sorte está ao seu lado. Suas moedas se multiplicaram diante de seus olhos.",
+		"modificador": 2,
+		"path_imagem": "imagens/eventos/img_sorte_em_dobro.jpg",
+		"cor": "1EFF00",
+		"peso": 0.5,
+		"tipo_evento": "multiplicador_moedas_e_exp"
+	},
+	{
+		"titulo": "Grande Pote de Ouro",
+		"raridade": "Épico",
+		"descricao": "Após uma longa jornada, você se depara com um pote de ouro reluzente, recheado com 5000 moedas. Parece que a jornada finalmente valeu a pena.",
+		"modificador": 5000,
+		"path_imagem": "imagens/eventos/img_grande_pote_de_ouro.jpg",
+		"cor": "A335EE",
+		"peso": 0.1,
+		"tipo_evento": "adicionar_moedas"
+	},
+	{
+		"titulo": "O Rei Usurpador",
+		"raridade": "Raro",
+		"descricao": "Uma figura imponente surge. Com um olhar severo, o rei exige sua parte. Antes que você perceba, 100 moedas são levadas de suas mãos.",
+		"modificador": 100,
+		"path_imagem": "imagens/eventos/img_o_rei_usurpador.jpg",
+		"cor": "0070DD",
+		"peso": 0.3,
+		"tipo_evento": "subtrair_moedas"
+	},
+	{
+		"titulo": "Dia de Azar",
+		"raridade": "Incomum",
+		"descricao": "Ao olhar para sua bolsa de moedas, você percebe que está mais leve. Um erro, um descuido — e metade do que você ganhou desapareceu. O azar não perdoa. (Você perdeu 50 moedas)",
+		"modificador": 50,
+		"path_imagem": "imagens/eventos/img_dia_de_azar.jpg",
+		"cor": "1EFF00",
+		"peso": 0.5,
+		"tipo_evento": "subtrair_moedas"
+	},
+	{
+		"titulo": "Pedra do Regresso",
+		"raridade": "Épico",
+		"descricao": "Você encontra uma pedra com uma estranha energia. Ao tocá-la, sente como se o tempo tivesse retrocedido, permitindo-lhe tentar a sorte novamente.. (Você pode usar o comando \"\\moedas\" novamente)",
+		"modificador": 0,
+		"path_imagem": "imagens/eventos/img_pedra_do_regresso.jpg",
+		"cor": "A335EE",
+		"peso": 0.1,
+		"tipo_evento": "time_reset"
+	},
+	{
+		"titulo": "Tomo do Conhecimento",
+		"raridade": "Raro",
+		"descricao": "Você encontrou um misterioso tomo com inscrições estranhas e, ao abri-lo, obteve um grande aumento na sua experiência adicionando mais 200 de EXP.",
+		"modificador": 200,
+		"path_imagem": "imagens/eventos/img_tomo_do_conhecimento.jpg",
+		"cor": "0070DD",
+		"peso": 0.3,
+		"tipo_evento": "adicionar_exp"
+	},
+	{
+        "titulo": "Dragão Ganancioso",
+        "raridade": "Raro",
+        "descricao": "Um dragão ganancioso aparece, exigindo 200 moedas. Em troca, ele garante que dobrará seu EXP.",
+        "modificador": {"moedas": 200, "exp": 2},
+        "path_imagem": "imagens/eventos/img_dragao_ganancioso.jpg",
+        "cor": "0070DD",
+        "peso": 0.1,
+        "tipo_evento": "subtrair_e_multiplicar_moedas_e_exp"
+    },
+	{
+        "titulo": "Tesouro Esquecido",
+        "raridade": "Lendário",
+        "descricao": "Enquanto explorava, você encontrou um baú misterioso contendo 10.000 moedas. Um achado raríssimo!",
+        "modificador": 10000,
+        "path_imagem": "imagens/eventos/img_tesouro_esquecido.jpg",
+        "cor": "fe6500",
+        "peso": 0.05,
+        "tipo_evento": "adicionar_moedas"
+    },
+	{
+        "titulo": "Rebeldes Saqueadores",
+        "raridade": "Raro",
+        "descricao": "Um grupo de rebeldes aparece diante de você e leva metade das suas moedas. Um golpe duro!",
+        "modificador": 50,
+        "path_imagem": "imagens/eventos/img_rebeldes_saqueadores.jpg",
+        "cor": "0070DD",
+        "peso": 0.3,
+        "tipo_evento": "subtrair_percentual_moedas"
+    },
+	{
+        "titulo": "Labirinto Perdido",
+        "raridade": "Incomum",
+        "descricao": "Você se perdeu em um labirinto e precisou gasta 20 moedas para encontrar o caminho de volta. Uma lição cara, mas valiosa.",
+        "modificador": 20,
+        "path_imagem": "imagens/eventos/img_labirinto_perdido.jpg",
+        "cor": "1EFF00",
+        "peso": 0.5,
+        "tipo_evento": "subtrair_moedas"
+    },
+	{
+        "titulo": "Estrelas Cadentes",
+        "raridade": "Raro",
+        "descricao": "Estrelas cadentes risca o céu, e ao fazer um desejo, você ganha um bônus de 300 moedas!",
+        "modificador": 300,
+        "path_imagem": "imagens/eventos/img_estrelas_cadentes.jpg",
+        "cor": "0070DD",
+        "peso": 0.3,
+        "tipo_evento": "adicionar_moedas"
+    },
+	{
+        "titulo": "Perdido no Bosque",
+        "raridade": "Incomum",
+        "descricao": "Você se perdeu no bosque e acabou gastando tempo demais. 50 de EXP foram subtraídos.",
+        "modificador": 50,
+        "path_imagem": "imagens/eventos/img_perdido_no_bosque.jpg",
+        "cor": "1EFF00",
+        "peso": 0.5,
+        "tipo_evento": "subtrair_exp"
+    },
+	 {
+        "titulo": "Sábio Errante",
+        "raridade": "Raro",
+        "descricao": "Você encontrou um sábio viajante que lhe transmitiu conhecimentos valiosos, adicionando 100 de EXP.",
+        "modificador": 100,
+        "path_imagem": "imagens/eventos/img_sabio_errante.jpg",
+        "cor": "0070DD",
+        "peso": 0.3,
+        "tipo_evento": "adicionar_exp"
+    },
+	{
+        "titulo": "Golpe do Mercenário",
+        "raridade": "Incomum",
+        "descricao": "Um mercenário furtivo atravessa a multidão e rouba 75 moedas antes de desaparecer.",
+        "modificador": 75,
+        "path_imagem": "imagens/eventos/img_golpe_do_mercenario.jpg",
+        "cor": "1EFF00",
+        "peso": 0.5,
+        "tipo_evento": "subtrair_moedas"
+    },
+	{
+        "titulo": "Fogueira da Sorte",
+        "raridade": "Incomum",
+        "descricao": "Ao se aquecer em uma fogueira, você encontra uma pequena bolsa de moedas escondida nas cinzas. (+150 moedas).",
+        "modificador": 150,
+        "path_imagem": "imagens/eventos/img_fogueira_da_sorte.jpg",
+        "cor": "1EFF00",
+        "peso": 0.7,
+        "tipo_evento": "adicionar_moedas"
+    }
+]
