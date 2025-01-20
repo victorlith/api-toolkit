@@ -107,7 +107,7 @@ async def pesquisar_exoplaneta(nome):
         if response:
             return jsonify({'resultado': response})
         else:
-            return jsonify({'resultado': 'Exoplaneta não encontrado'})
+            return jsonify({'resultado': None, 'msg': f'O exoplaneta não foi encontrado com o nome {nome}'})
     else:
         return jsonify({'resultado': 'Nome do exoplaneta não fornecido'})
 
