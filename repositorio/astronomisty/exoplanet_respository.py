@@ -80,7 +80,7 @@ class ExoplanetRepository:
                            'st_teff, '
                            'st_spectype, '
                            'sy_pnum, '
-                           f'sy_snum FROM PSCompPars_2025 WHERE pl_name IS NOT NULL ORDER BY pl_name LIMIT 15 OFFSET {offset} ')
+                           f'sy_snum FROM PSCompPars_2025 WHERE pl_name IS NOT NULL ORDER BY pl_name LIMIT 10 OFFSET {offset} ')
 
             response = cursor.fetchall()
 
