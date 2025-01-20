@@ -10,3 +10,6 @@ class ExoplanetService:
 
     def buscar_todos_exoplanetas(self, offset: int) -> list:
         return self.__exoplanet_repository.buscar_todos_exoplanetas(offset)
+
+    def pesquisar_por_exoplaneta(self, nome: str):
+        return self.__exoplanet_repository.pesquisar_por_exoplaneta(nome)

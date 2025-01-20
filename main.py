@@ -97,6 +97,21 @@ async def buscar_todos_exoplanetas():
     else:
         return jsonify({"resultado": None}), 400
 
+@app.route(f'/{pattern_route}/astronomisty/search/<nome>', methods=['GET'])
+async def pesquisar_exoplaneta(nome):
+    print(nome)
+    if nome:
+        exoplanet_controller = ExoplanetController()
+        response = exoplanet_controller.pesquisar_por_exoplaneta(nome)
+
+        if response:
+            return jsonify({'resultado': response})
+        else:
+            return jsonify({'resultado': 'Exoplaneta não encontrado'})
+    else:
+        return jsonify({'resultado': 'Nome do exoplaneta não fornecido'})
+
+
 if __name__ == '__main__':
     module_utils.carregar_eventos_moedas()
     app.run(host='0.0.0.0', port=80, debug=True)
