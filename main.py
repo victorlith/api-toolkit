@@ -82,7 +82,7 @@ async def buscar_exoplaneta(name):
     response = exoplanet_controller.buscar_exoplaneta(name)
 
     if response:
-        return jsonify({"resultado": response.to_dic()})
+        return jsonify({"resultado": response})
     else:
         return jsonify({"resultado": None}), 400
 
