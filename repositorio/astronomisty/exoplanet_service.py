@@ -15,7 +15,6 @@ class ExoplanetService:
             checar_valor = lambda x: None if x is None else x
 
             for r in response:
-
                 exoplaneta.pl_nome = r[0]
                 exoplaneta.pl_massa = r[1]
                 exoplaneta.pl_raio = r[2]

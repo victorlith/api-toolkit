@@ -99,7 +99,6 @@ async def buscar_todos_exoplanetas():
 
 @app.route(f'/{pattern_route}/astronomisty/search/<nome>', methods=['GET'])
 async def pesquisar_exoplaneta(nome):
-    print(nome)
     if nome:
         exoplanet_controller = ExoplanetController()
         response = exoplanet_controller.pesquisar_por_exoplaneta(nome)
