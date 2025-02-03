@@ -1,13 +1,13 @@
 {
     "postgre": {
-            "database": "astroplanet",
-            "user": "victor",
-            "password": "S@bedoria10",
-            "host": "194.163.148.45",
-            "port": 5432
+        "database": "astroplanet",
+        "user": "victor",
+        "password": "S@bedoria10",
+        "host": "194.163.148.45",
+        "port": 5432
     },
     "mongodb": {
-            "connection_string": "mongodb+srv://victorsouzalith98:Fk3j85smXfWrUdSk@cluster0economisty.zwntl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0Economisty",
-            "database": "economisty"
+        "connection_string": "mongodb+srv://victorsouzalith98:Fk3j85smXfWrUdSk@cluster0economisty.zwntl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0Economisty",
+        "database": "economisty"
     }
 }

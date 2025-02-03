@@ -1,4 +1,3 @@
-import asyncio
 import asyncpg
 import json
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -11,9 +10,6 @@ class DatabaseConnection:
             db = json.load(file)
     
         return db[name_database]
-
-    async def db(self):
-        return await asyncpg.connect(**self.__load_db('postgre'))
     
     async def postgre_db(self):
         return await asyncpg.connect(**self.__load_db('postgre'))

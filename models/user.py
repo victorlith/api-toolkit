@@ -1,11 +1,4 @@
 import pymongo
-import pytz
-from datetime import datetime, timedelta
-from motor.motor_asyncio import AsyncIOMotorClient
-import json
-import random
-import math
-from typing import Optional, Union, Tuple, Any
 from database.database_conn import DatabaseConnection
 
 async def find_db_collection(collection_name: str):
