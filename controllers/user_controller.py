@@ -8,4 +8,6 @@ async def buscar_usuario_controller(user_id: int):
 
 async def rank_dos_usuarios_controller():
     users_rank = await rank_de_usuarios()
+    for idx, u in enumerate(users_rank, 1):
+        u['rank'] = idx
     return users_rank

@@ -17,7 +17,7 @@ async def main():
     #print(rank)
 
     start_time = time.perf_counter()
-    user = await buscar_usuario_controller(369564489139355688)
+    user = await rank_dos_usuarios_controller()
     print(user)
     end_time = time.perf_counter()
 
