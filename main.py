@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 import repositorio.economisty.module_utils as module_utils
 from bson import json_util
 from repositorio.astronomisty.exoplanet_controller import ExoplanetController
+from repositorio.astronomisty.exoplanet_service import ExoplanetService
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -109,6 +110,42 @@ async def pesquisar_exoplaneta(nome):
             return jsonify({'resultado': None, 'msg': f'O exoplaneta com o nome ({nome}) não foi encontrado.'})
     else:
         return jsonify({'resultado': 'Nome do exoplaneta não fornecido'})
+
+
+@app.route(f'/{pattern_route}/v2/astronomisty/exoplanet/<nome>', methods=['GET'])
+async def buscar_exoplaneta_v2(nome):
+    exoplanet_service = ExoplanetService()
+    response = await exoplanet_service.buscar_exoplaneta_v2_service(nome)
+
+    if response:
+        return jsonify(response[0])
+    else:
+        return jsonify(None), 400
+    
+@app.route(f'/{pattern_route}/v2/astronomisty/search/<nome>', methods=['GET'])
+async def pesquisar_exoplaneta_v2(nome):
+    if nome:
+        exoplanet_service = ExoplanetService()
+        response = await exoplanet_service.pesquisar_por_exoplaneta_v2_service(nome)
+
+        if response:
+            return jsonify(response)
+        else:
+            return jsonify({'resultado': None, 'msg': f'O exoplaneta com o nome ({nome}) não foi encontrado.'})
+    else:
+        return jsonify({'resultado': 'Nome do exoplaneta não fornecido'})
+
+@app.route(f'/{pattern_route}/v2/astronomisty/allExoplanets', methods=['GET'])
+async def buscar_todos_exoplanetas_v2():
+    offset = request.args.get('offset', default=0, type=int)
+    exoplanet_service = ExoplanetService()
+    response = await exoplanet_service.buscar_todos_exoplanetas_v2_service(offset)
+
+    if response:
+        return jsonify(response)
+    else:
+        return jsonify(None), 400
+
 
 
 if __name__ == '__main__':
