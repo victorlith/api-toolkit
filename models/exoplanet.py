@@ -27,7 +27,7 @@ class Exoplanet:
                     sy_dist * 3.26156 AS sy_dist_ly,
                     CASE WHEN st_mass IS NULL THEN 0 ELSE st_mass END AS st_mass_s,
                     CASE WHEN st_rad IS NULL THEN 0 ELSE st_rad END AS st_rad_s,
-                    CASE WHEN st_teff IS NULL THEN 0 ELSE st_teff END AS st_teff_s,
+                    st_teff,
                     st_spectype,
                     sy_pnum,
                     sy_snum,
