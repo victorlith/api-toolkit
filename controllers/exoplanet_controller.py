@@ -9,7 +9,7 @@ class ExoplanetController:
         if lum:
             return 10 ** float(lum)
         else:
-            return None
+            return 0
 
     def calcular_zona_habitavel(self, luminosidade: float) -> float:
         if luminosidade:
@@ -25,7 +25,7 @@ class ExoplanetController:
     async def buscar_exoplaneta_v2(self, nome: str):       
         response = await self.__exoplanet_repository.buscar_exoplaneta_v2(nome)
         checar_valor = lambda x: None if x is None else x
-        luminosidade: float = self.calcular_luminosidade(checar_valor(response[0]['st_lum']))
+        luminosidade: float = self.calcular_luminosidade(response[0]['st_lum'])
         zona_habitavel: float = self.calcular_zona_habitavel(luminosidade)
         response[0]['st_lum'] = luminosidade
         response[0]['pl_sy_zona_habitavel'] = zona_habitavel
