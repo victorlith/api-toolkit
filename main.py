@@ -12,7 +12,7 @@ app.register_blueprint(user_bp, url_prefix='/api')
 
 
 if __name__ == '__main__':
-    from waitress import serve
-    print('Servidor iniciado...')
-    serve(app, host="0.0.0.0", port=80)
-    #app.run(host='0.0.0.0', port=80, debug=True)
+    #from waitress import serve
+    #print('Servidor iniciado...')
+    #serve(app, host="0.0.0.0", port=80)
+    app.run(host='0.0.0.0', port=80, debug=True)

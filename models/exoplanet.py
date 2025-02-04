@@ -5,29 +5,36 @@ class Exoplanet:
     def __init__(self):
         self.__conn2 = DatabaseConnection().postgre_db()
 
-    async def buscar_exoplaneta_v2(self, nome: str) -> list:
+    async def buscar_exoplaneta_v2(self, nome: str):
         db = await self.__conn2
         try:
-            row = await db.fetch(f'SELECT pl_name, '
-                           'pl_bmasse, '
-                           'pl_rade, '
-                           'pl_dens,'
-                           'pl_orbper, '
-                           'disc_year, disc_pubdate, '
-                           'discoverymethod, '
-                           'hostname, '
-                           'rastr, '
-                           'decstr, '
-                           'sy_plx, '
-                           'sy_dist * 3.26156 as sy_dist_ly, '
-                           'sy_dist, '
-                           'st_mass, '
-                           'st_rad, '
-                           'st_teff, '
-                           'st_spectype, '
-                           'sy_pnum, '
-                           f'sy_snum, '
-                           f'st_lum FROM \"PSCompPars\" WHERE pl_name = \'{nome}\'')
+            row = await db.fetch(f'''
+                SELECT 
+                    pl_name,
+                    pl_bmasse,
+                    CASE WHEN pl_bmasse IS NULL THEN 0 ELSE pl_bmasse END AS pl_bmasse_s,
+                    pl_rade,
+                    pl_dens,
+                    CASE WHEN pl_orbper IS NULL THEN 0 ELSE pl_orbper END AS pl_orbper_s,
+                    disc_year,
+                    disc_pubdate,
+                    discoverymethod,
+                    hostname,
+                    rastr,
+                    decstr,
+                    CASE WHEN sy_plx IS NULL THEN 0 ELSE sy_plx END AS sy_plx_s,
+                    CASE WHEN sy_dist IS NULL THEN 0 ELSE sy_dist END AS sy_dist_s,
+                    sy_dist * 3.26156 AS sy_dist_ly,
+                    CASE WHEN st_mass IS NULL THEN 0 ELSE st_mass END AS st_mass_s,
+                    CASE WHEN st_rad IS NULL THEN 0 ELSE st_rad END AS st_rad_s,
+                    CASE WHEN st_teff IS NULL THEN 0 ELSE st_teff END AS st_teff_s,
+                    st_spectype,
+                    sy_pnum,
+                    sy_snum,
+                    st_lum
+                FROM "PSCompPars" 
+                WHERE pl_name = '{nome}'
+            ''')
             response = [dict(r) for r in row]
             return response
         except Exception as e:

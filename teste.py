@@ -1,6 +1,7 @@
 import asyncio
 import time
-from controllers.user_controller import *
+from models.exoplanet import *
+from controllers.exoplanet_controller import *
 
 
 async def main():
@@ -16,12 +17,14 @@ async def main():
     
     #print(rank)
 
+    exoplanet = ExoplanetController()
     start_time = time.perf_counter()
-    user = await rank_dos_usuarios_controller()
-    print(user)
+    #user = await exoplanet.buscar_exoplaneta_v2('Gliese 12 b')
+    user = await exoplanet.buscar_exoplaneta_v2('Gliese 12 b')
+    print(user[0])
     end_time = time.perf_counter()
 
-    print(end_time - start_time)
+    print('\nTempo de Execução: ', end_time - start_time)
 
 
 if __name__ == '__main__':
