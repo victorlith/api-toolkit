@@ -30,7 +30,7 @@ class Exoplanet:
                     st_spectype,
                     sy_pnum,
                     sy_snum,
-                    st_lum
+                    CASE WHEN st_lum IS NULL THEN 0 ELSE st_lum END AS st_lum
                 FROM "PSCompPars" 
                 WHERE pl_name = '{nome}'
             ''')
