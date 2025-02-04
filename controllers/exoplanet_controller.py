@@ -20,7 +20,7 @@ class ExoplanetController:
             limite_externo = math.sqrt(luminosidade * S_externo)
             return limite_interno, limite_externo
         else:
-            return None
+            return 0
         
     async def buscar_exoplaneta_v2(self, nome: str):       
         response = await self.__exoplanet_repository.buscar_exoplaneta_v2(nome)
