@@ -20,8 +20,8 @@ async def main():
     exoplanet = ExoplanetController()
     start_time = time.perf_counter()
     #user = await exoplanet.buscar_exoplaneta_v2('Gliese 12 b')
-    user = await exoplanet.buscar_exoplaneta_v2('Gliese 12 b')
-    print(user[0])
+    user = await exoplanet.pesquisar_por_exoplaneta_v2('hd')
+    print(user)
     end_time = time.perf_counter()
 
     print('\nTempo de Execução: ', end_time - start_time)

@@ -11,7 +11,6 @@ class Exoplanet:
             row = await db.fetch(f'''
                 SELECT 
                     pl_name,
-                    pl_bmasse,
                     CASE WHEN pl_bmasse IS NULL THEN 0 ELSE pl_bmasse END AS pl_bmasse_s,
                     pl_rade,
                     pl_dens,
@@ -24,7 +23,7 @@ class Exoplanet:
                     decstr,
                     CASE WHEN sy_plx IS NULL THEN 0 ELSE sy_plx END AS sy_plx_s,
                     CASE WHEN sy_dist IS NULL THEN 0 ELSE sy_dist END AS sy_dist_s,
-                    sy_dist * 3.26156 AS sy_dist_ly,
+                    CASE WHEN sy_dist IS NULL THEN 0 ELSE sy_dist * 3.26156 END AS sy_dist_ly,
                     CASE WHEN st_mass IS NULL THEN 0 ELSE st_mass END AS st_mass_s,
                     CASE WHEN st_rad IS NULL THEN 0 ELSE st_rad END AS st_rad_s,
                     st_teff,
@@ -45,7 +44,11 @@ class Exoplanet:
     async def buscar_todos_exoplanetas_v2(self, offset=0) -> list:
         db = await self.__conn2
         try:  
-            row = await db.fetch(f'SELECT pl_name, pl_bmasse, sy_dist * 3.26156 as sy_dist_ly FROM \"PSCompPars\" WHERE pl_name IS NOT NULL ORDER BY pl_name ASC LIMIT 10 OFFSET {offset}')
+            row = await db.fetch(f'''
+                                 SELECT pl_name, 
+                                 CASE WHEN pl_bmasse IS NULL THEN 0 ELSE pl_bmasse END AS pl_bmasse, 
+                                 CASE WHEN sy_dist IS NULL THEN 0 ELSE sy_dist * 3.26156 END AS sy_dist_ly 
+                                 FROM \"PSCompPars\" WHERE pl_name IS NOT NULL ORDER BY pl_name ASC LIMIT 10 OFFSET {offset} ''')
             rows = [dict(r) for r in row]   
             return rows
         except Exception as e:
@@ -56,7 +59,10 @@ class Exoplanet:
     async def pesquisar_por_exoplaneta_v2(self, nome: str) -> list:
         db = await self.__conn2
         try:
-            row = await db.fetch(f'SELECT pl_name, pl_bmasse, sy_dist * 3.26156 as sy_dist_ly FROM \"PSCompPars\" WHERE pl_name ILIKE \'{nome}%\' ORDER BY pl_name ASC LIMIT 10')
+            row = await db.fetch(f'''SELECT pl_name, 
+                                 CASE WHEN pl_bmasse IS NULL THEN 0 ELSE pl_bmasse END AS pl_bmasse, 
+                                 CASE WHEN sy_dist IS NULL THEN 0 ELSE sy_dist * 3.26156 END AS sy_dist_ly 
+                                 FROM \"PSCompPars\" WHERE pl_name ILIKE \'{nome}%\' ORDER BY pl_name ASC LIMIT 10 ''')
             response = [dict(r) for r in row]
             return response
         except Exception as e:
