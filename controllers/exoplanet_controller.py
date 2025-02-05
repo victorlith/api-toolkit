@@ -3,7 +3,7 @@ from models.exoplanet import Exoplanet
 
 class ExoplanetController:
     def __init__(self):
-        self.__exoplanet_repository = Exoplanet()
+        self.__exoplanet = Exoplanet()
 
     def calcular_luminosidade(self, lum):
         if lum:
@@ -23,7 +23,7 @@ class ExoplanetController:
             return 0
         
     async def buscar_exoplaneta_v2(self, nome: str):       
-        response = await self.__exoplanet_repository.buscar_exoplaneta_v2(nome)
+        response = await self.__exoplanet.buscar_exoplaneta_v2(nome)
         checar_valor = lambda x: None if x is None else x
         luminosidade: float = self.calcular_luminosidade(response[0]['st_lum'])
         zona_habitavel: float = self.calcular_zona_habitavel(luminosidade)
@@ -32,9 +32,16 @@ class ExoplanetController:
         return response
     
     async def buscar_todos_exoplanetas_v2(self, offset: int):
-        response = await self.__exoplanet_repository.buscar_todos_exoplanetas_v2(offset)
+        response = await self.__exoplanet.buscar_todos_exoplanetas_v2(offset)
         return response
     
     async def pesquisar_por_exoplaneta_v2(self, nome: str) -> list:
-        response = await self.__exoplanet_repository.pesquisar_por_exoplaneta_v2(nome)
+        response = await self.__exoplanet.pesquisar_por_exoplaneta_v2(nome)
+        return response
+
+    async def filtrar_exoplanetas_v2(self, offset: int, filtro: str) -> list:
+        value = ''
+        if filtro is not None:
+            value = filtro.upper()
+        response = await self.__exoplanet.filtrar_exoplanetas_v2(offset, value)
         return response

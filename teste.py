@@ -19,8 +19,7 @@ async def main():
 
     exoplanet = ExoplanetController()
     start_time = time.perf_counter()
-    user = await exoplanet.buscar_exoplaneta_v2('2MASS J11011926-7732383 b')
-    #user = await exoplanet.buscar_exoplaneta_v2('Gliese 12 b')
+    user = await exoplanet.filtrar_exoplanetas_v2(0, filtro='g')
     print(user)
     end_time = time.perf_counter()
 

@@ -56,6 +56,21 @@ class Exoplanet:
         finally:
             await db.close()
     
+    async def filtrar_exoplanetas_v2(self, offset=0, filtro: str = None) -> list:
+        db = await self.__conn2
+        try:     
+            row = await db.fetch(f'''
+                                 SELECT pl_name, 
+                                 CASE WHEN pl_bmasse IS NULL THEN 0 ELSE pl_bmasse END AS pl_bmasse, 
+                                 CASE WHEN sy_dist IS NULL THEN 0 ELSE sy_dist * 3.26156 END AS sy_dist_ly 
+                                 FROM \"PSCompPars\" WHERE pl_name LIKE \'{filtro}%\' LIMIT 10 OFFSET {offset} ''')
+            rows = [dict(r) for r in row]   
+            return rows
+        except Exception as e:
+            print(f'{e}')
+        finally:
+            await db.close()
+
     async def pesquisar_por_exoplaneta_v2(self, nome: str) -> list:
         db = await self.__conn2
         try:

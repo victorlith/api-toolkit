@@ -38,3 +38,17 @@ async def buscar_todos_exoplanetas_v2():
         return jsonify(response)
     else:
         return jsonify(None), 400
+
+
+@exoplanet_bp.route(f'/v2/astronomisty/filtrarExoplaneta', methods=['GET'])
+async def filtrar_exoplaneta():
+    offset = request.args.get('offset', default=0, type=int)
+    filtro = request.args.get('filter', default=None, type=str)
+
+    exoplanet_controller = ExoplanetController()
+    response = await exoplanet_controller.filtrar_exoplanetas_v2(offset, filtro)
+
+    if response:
+        return jsonify(response)
+    else:
+        return jsonify(None), 400
